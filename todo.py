@@ -112,7 +112,7 @@ def app():
         elif user_input == "3":
             id = int(input("Entrer l'id: "))
             show_table()
-            deadline = input("Entrer votre nouvelle échéance")
+            deadline = input("Entrer votre nouvelle échéance: ")
             update_deadline(id, deadline)
             input("\n\nVos informations ont bien été mise à jour.")
         elif user_input == "4":
