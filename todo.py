@@ -131,7 +131,9 @@ def app():
             update_deadline(id, deadline)
             input("\n\nVos informations ont bien été mise à jour.")
         elif user_input == "4":
-            pass
+            show_table()
+            id = int(input("Enter l'id de la tâche que vous souhaitez supprimer"))
+
         else:
             print("Oups... 😥... essayez encore !")
 
