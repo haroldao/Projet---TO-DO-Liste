@@ -9,10 +9,10 @@ MENU_PROMPT = """
 #Bienvenu sur l'interface NSI Todo Liste :
 #=========================================
 Quelle action souhaitez vous effectuez ? répondre par 1,2,3,4 ou 5:
-1 - C - Créer une nouvelle tache
-2 - R - Consulter la liste des taches non terminée, terminée, urgentes
-3 - U - Modifier l'état d'une tache.
-4 - D - Supprimer une tache.
+1 - C - Créer une nouvelle tâche
+2 - R - Consulter la liste des tâches non terminée, terminée, urgentes
+3 - U - Modifier l'état d'une tâche.
+4 - D - Supprimer une tâche.
 5 - Quitter l'application
 
 Je veux choisir l'option : """
