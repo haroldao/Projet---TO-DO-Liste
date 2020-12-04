@@ -35,7 +35,7 @@ def create_table():
     connection.close()
 
 
-def add_task(task_name, date, status):
+def add_task(task_name, deadline, status):
     connection = sql.connect("todo.db")
     cursor = connection.cursor()
 
@@ -44,10 +44,12 @@ def add_task(task_name, date, status):
         VALUES (?, ?, ?)
     '''
 
-    cursor.execute(query, (task_name, date, status))
+    cursor.execute(query, (task_name, deadline, status))
 
     connection.commit()
     connection.close()
+
+
 
 
 create_table()
@@ -55,8 +57,8 @@ create_table()
 
 ######################## Application #######################
 
-def add_data(task_name, date, status):
-    add_task(task_name, date, status)
+def add_data(task_name, deadline, status):
+    add_task(task_name, deadline, status)
 
 
 def app():
@@ -64,11 +66,11 @@ def app():
     while(user_input := input(MENU_PROMPT)) != "5":
         if user_input == "1":
             task_name = input("Entrer le nom de votre nouvelle tâche: ")
-            date = input(
+            deadline = input(
                 "Entrer l'échéance (ex : 2020-12-10 (format : YYYY-MM-DD)): ")
             status = input(
                 "Entrer le status (tâche termininée : X / tâche non-terminée : O): ")
-            add_data(task_name, date, status)
+            add_data(task_name, deadline, status)
         elif user_input == "2":
             pass
         elif user_input == "3":
