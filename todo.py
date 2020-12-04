@@ -50,6 +50,25 @@ def add_task(task_name, deadline, status):
     connection.close()
 
 
+def update_deadline(id, deadline):
+    connection = sql.connect("todo.db")
+    cursor = connection.cursor()
+
+    if deadline == "":
+        query = '''
+        UPDATE todo
+        SET echeance = '{}'
+        WHERE id = {}'''.format(deadline, id)
+
+    else:
+        print(
+            "La tâche que vous souhaitez n'exite pas ou vérifiez que l'échéance est bonne")
+
+    cursor.execute(query)
+    all_rows = fetchall()
+    connection.commit()
+    connection.close()
+    print("Toutes les entrées:", all_rows)
 
 
 create_table()
