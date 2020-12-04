@@ -65,7 +65,7 @@ def update_deadline(id, deadline):
             "La tâche que vous souhaitez n'exite pas ou vérifiez que l'échéance est bonne")
 
     cursor.execute(query)
-    all_rows = fetchall()
+    all_rows = cursor.fetchall()
     connection.commit()
     connection.close()
     print("Toutes les entrées:", all_rows)
