@@ -67,7 +67,7 @@ def add_task(task_name, date, status):
         VALUES (?, ?, ?)
     '''
 
-    cursor.execute(query, (designation, echeance, etat))
+    cursor.execute(query, (task_name, date, status))
 
     connection.commit()
     connection.close()
