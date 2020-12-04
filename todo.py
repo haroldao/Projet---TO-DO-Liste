@@ -125,8 +125,8 @@ def app():
         elif user_input == "2":
             pass
         elif user_input == "3":
-            id = int(input("Entrer l'id: "))
             show_table()
+            id = int(input("Entrer l'id: "))
             deadline = input("Entrer votre nouvelle échéance: ")
             update_deadline(id, deadline)
             input(
