@@ -122,11 +122,11 @@ def show_task_status():
 
     cursor.execute(query_done)
     mytable_done = from_db_cursor(cursor)
-    print("\nTable des tâches terminées ⏬\n\n", mytable_done)
+    print("\n\nTable des tâches terminées ⏬\n\n", mytable_done)
 
     cursor.execute(query_not_done)
     mytable_not_done = from_db_cursor(cursor)
-    print("\nTable des tâches non terminées ⏬\n\n", mytable_not_done)
+    print("\n\nTable des tâches non terminées ⏬\n\n", mytable_not_done)
 
     connection.commit()
     connection.close()
@@ -153,6 +153,7 @@ def app():
             add_data(task_name, deadline, status)
         elif user_input == "2":
             show_task_status()
+            input("🚧🚧 Pour revenir au menu, merci de presser ↩ ")
         elif user_input == "3":
             show_table()
             id = int(input("Entrer l'id: "))
