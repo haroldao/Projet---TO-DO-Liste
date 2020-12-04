@@ -89,6 +89,18 @@ def show_table():
 
 
 def delete_task(id):
+    connection = sql.connect("todo.db")
+    cursor = connection.cursor()
+
+    query = '''
+        DELETE
+        FROM todo
+        WHERE id = {}
+    '''.format(id)
+
+    cursor.execute(query)
+    connection.commit()
+    connection.close()
 
 
 create_table()
