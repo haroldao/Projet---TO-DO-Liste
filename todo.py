@@ -18,29 +18,6 @@ Quelle action souhaitez vous effectuez ? répondre par 1,2,3,4 ou 5:
 Je veux choisir l'option : """
 
 
-def app():
-
-    while(user_input := input(MENU_PROMPT)) != "5":
-        if user_input == "1":
-            task_name = input("Entrer le nom de votre nouvelle tâche: ")
-            date = input(
-                "Entrer l'échéance (ex : 2020-12-10 (format : YYYY-MM-DD)): ")
-            status = input(
-                "Entrer le status (tâche termininée : X / tâche non-terminée : O): ")
-            add_task(task_name, date, status)
-        elif user_input == "2":
-            pass
-        elif user_input == "3":
-            pass
-        elif user_input == "4":
-            pass
-        else:
-            print("Oups... 😥... essayez encore !")
-
-
-app()
-
-
 def create_table():
     connection = sql.connect("todo.db")
     cursor = connection.cursor()
@@ -71,3 +48,35 @@ def add_task(task_name, date, status):
 
     connection.commit()
     connection.close()
+
+
+create_table()
+
+
+######################## Application #######################
+
+def add_data(task_name, date, status):
+    add_task(task_name, date, status)
+
+
+def app():
+
+    while(user_input := input(MENU_PROMPT)) != "5":
+        if user_input == "1":
+            task_name = input("Entrer le nom de votre nouvelle tâche: ")
+            date = input(
+                "Entrer l'échéance (ex : 2020-12-10 (format : YYYY-MM-DD)): ")
+            status = input(
+                "Entrer le status (tâche termininée : X / tâche non-terminée : O): ")
+            add_data(task_name, date, status)
+        elif user_input == "2":
+            pass
+        elif user_input == "3":
+            pass
+        elif user_input == "4":
+            pass
+        else:
+            print("Oups... 😥... essayez encore !")
+
+
+app()
