@@ -22,7 +22,11 @@ def app():
 
     while(user_input := input(MENU_PROMPT)) != "5":
         if user_input == "1":
-            pass
+            task_name = input("Entrer le nom de votre nouvelle tâche: ")
+            date = input("Entrer l'échéance: ")
+            status = input(
+                "Entrer le status (tâche termininée : X / tâche non-terminée : O)")
+            add_task(task_name, date, status)
         elif user_input == "2":
             pass
         elif user_input == "3":
