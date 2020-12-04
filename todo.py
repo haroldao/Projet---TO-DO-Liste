@@ -54,7 +54,7 @@ def update_deadline(id, deadline):
     connection = sql.connect("todo.db")
     cursor = connection.cursor()
 
-    if deadline == "":
+    if deadline != "":
         query = '''
         UPDATE todo
         SET echeance = '{}'
@@ -68,7 +68,24 @@ def update_deadline(id, deadline):
     all_rows = cursor.fetchall()
     connection.commit()
     connection.close()
-    print("Toutes les entrées:", all_rows)
+
+
+def show_table():
+    connection = sql.connect("todo.db")
+    cursor = connection.cursor()
+
+    query = '''
+        SELECT * 
+        FROM TODO
+    '''
+
+    cursor.execute(query)
+    connection.commit()
+
+    mytable = from_db_cursor(cursor)
+    print("La table actuellement ⏬\n", mytable)
+
+    connection.close()
 
 
 create_table()
@@ -93,7 +110,11 @@ def app():
         elif user_input == "2":
             pass
         elif user_input == "3":
-            pass
+            id = int(input("Entrer l'id: "))
+            show_table()
+            deadline = input("Entrer votre nouvelle échéance")
+            update_deadline(id, deadline)
+            input("\n\nVos informations ont bien été mise à jour.")
         elif user_input == "4":
             pass
         else:
