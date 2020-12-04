@@ -103,6 +103,35 @@ def delete_task(id):
     connection.close()
 
 
+def show_task_status():
+    connection = sql.connect("todo.db")
+    cursor = connection.cursor()
+
+    # Tache effectuée
+    query_done = '''
+        SELECT *
+        FROM todo
+        WHERE etat="X"
+    '''
+    # Tache non effectuée
+    query_not_done = '''
+        SELECT *
+        FROM todo
+        WHERE etat="O"
+    '''
+
+    cursor.execute(query_done)
+    mytable_done = from_db_cursor(cursor)
+    print("\nTable des tâches terminées ⏬\n\n", mytable_done)
+
+    cursor.execute(query_not_done)
+    mytable_not_done = from_db_cursor(cursor)
+    print("\nTable des tâches non terminées ⏬\n\n", mytable_not_done)
+
+    connection.commit()
+    connection.close()
+
+
 create_table()
 
 
@@ -123,7 +152,7 @@ def app():
                 "Entrer le status (tâche termininée : X / tâche non-terminée : O): ")
             add_data(task_name, deadline, status)
         elif user_input == "2":
-            pass
+            show_task_status()
         elif user_input == "3":
             show_table()
             id = int(input("Entrer l'id: "))
