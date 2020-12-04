@@ -88,6 +88,9 @@ def show_table():
     connection.close()
 
 
+def delete_task(id):
+
+
 create_table()
 
 
