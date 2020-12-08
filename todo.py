@@ -10,7 +10,7 @@ MENU_PROMPT = """
 #=========================================
 Quelle action souhaitez vous effectuez ? répondre par 1,2,3,4 ou 5:
 1 - C - Créer une nouvelle tâche
-2 - R - Consulter la liste des tâches non terminée, terminée, urgentes
+2 - R - Consulter la liste des tâches + tâches (non terminée, terminée, urgentes)
 3 - U - Modifier l'état d'une tâche.
 4 - D - Supprimer une tâche.
 5 - Quitter l'application
@@ -83,7 +83,7 @@ def show_table():
     connection.commit()
 
     mytable = from_db_cursor(cursor)
-    print("La table actuellement ⏬\n", mytable)
+    print("Liste complète de vos tâches ⏬\n", mytable)
 
     connection.close()
 
@@ -162,8 +162,30 @@ def app():
                 "Entrer le status (tâche termininée : X / tâche non-terminée : O): ")
             add_data(task_name, deadline, status)
         elif user_input == "2":
-            show_task_status()
-            input("🚧🚧 Pour revenir au menu, merci de presser ↩ ")
+            which_table = input(
+                '''Si vous souhaitez consulté votre liste de tâche, tapez 1.\nSi vous souhaitez consulté la liste des tachés non terminée, terminée, urgentes, tapez 2\n⏩ '''
+            )
+
+            if which_table == "1":
+                show_table()
+                see_another_table = input(
+                    "Si vous souhaitez consulté la liste de vos tâches non terminée, terminée, urgentes, écrivez OUI sinon appuyer sur la touche ENTRER : ")
+                if see_another_table == "Oui" or "OUI":
+                    show_task_status()
+                else:
+                    input("🚧🚧 Pour revenir au menu, merci de presser ↩ ")
+
+            elif which_table == "2":
+                show_task_status()
+                see_another_table = input(
+                    "Si vous souhaitez consulté la liste complète de vos tâches, écrivez OUI sinon appuyer sur la touche ENTRER : ")
+                if see_another_table == "Oui" or "OUI":
+                    show_table()
+                else:
+                    input("🚧🚧 Pour revenir au menu, merci de presser ↩ ")
+            else:
+                pass
+
         elif user_input == "3":
             show_table()
             id = int(input("Entrer l'id: "))
