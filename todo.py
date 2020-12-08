@@ -75,7 +75,7 @@ def show_table():
     cursor = connection.cursor()
 
     query = '''
-        SELECT * 
+        SELECT *
         FROM TODO
     '''
 
@@ -109,13 +109,13 @@ def show_task_status():
 
     # Tache effectuée
     query_done = '''
-        SELECT *
+        SELECT id, designation, echeance
         FROM todo
         WHERE etat="X"
     '''
     # Tache non effectuée
     query_not_done = '''
-        SELECT *
+        SELECT id, designation, echeance
         FROM todo
         WHERE etat="O"
     '''
@@ -142,7 +142,7 @@ def add_data(task_name, deadline, status):
 
 
 def app():
-
+    
     while(user_input := input(MENU_PROMPT)) != "5":
         if user_input == "1":
             task_name = input("Entrer le nom de votre nouvelle tâche: ")
