@@ -26,7 +26,7 @@ def create_table():
         CREATE TABLE IF NOT EXISTS todo(
             id INTEGER PRIMARY KEY,
             designation TEXT,
-            echeance TEXT,
+            echeance DATE,
             etat TEXT
         )
     '''
@@ -120,6 +120,11 @@ def show_task_status():
         WHERE etat="O"
     '''
 
+    query_emergency = '''
+        SELECT DATE ("now", "-1 year")
+        From todo
+    '''
+
     cursor.execute(query_done)
     mytable_done = from_db_cursor(cursor)
     print("\n\nTable des tâches terminées ⏬\n\n", mytable_done)
@@ -127,6 +132,10 @@ def show_task_status():
     cursor.execute(query_not_done)
     mytable_not_done = from_db_cursor(cursor)
     print("\n\nTable des tâches non terminées ⏬\n\n", mytable_not_done)
+
+    cursor.execute(query_emergency)
+    mytable_emergency = from_db_cursor(cursor)
+    print("\n\nTable des tâches URGENTES ⏬\n\n", mytable_emergency)
 
     connection.commit()
     connection.close()
