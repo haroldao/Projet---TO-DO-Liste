@@ -191,7 +191,7 @@ def app():
             deadline = input("Entrer votre nouvelle échéance: ")
             update_deadline(id, deadline)
             input(
-                "\n\nVos informations ont bien été mise à jour. Pressez la touche ↩ pour continuer")
+                "\n\nVos informations ont bien été mise à jour. Pressez la touche ↩ pour continuer ")
         elif user_input == "4":
             show_table()
             try:
