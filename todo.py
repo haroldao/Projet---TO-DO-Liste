@@ -195,8 +195,12 @@ def app():
                 "\n\nVos informations ont bien été mise à jour. Pressez la touche ↩ pour continuer")
         elif user_input == "4":
             show_table()
-            id = int(input("Enter l'id de la tâche que vous souhaitez supprimer: "))
-            delete_task(id)
+            try:
+                id = int(
+                    input("Enter l'id de la tâche que vous souhaitez supprimer: "))
+                delete_task(id)
+            except ValueError:
+                pass
             print("\nVotre tâche a bien été supprimée 😎")
 
         else:
