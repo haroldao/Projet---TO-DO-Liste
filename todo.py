@@ -121,8 +121,9 @@ def show_task_status():
     '''
 
     query_emergency = '''
-        SELECT DATE ("now", "-1 year")
-        From todo
+        SELECT * FROM todo
+        WHERE echeance < date('now','+15 days')
+        AND echeance > DATE("now")
     '''
 
     cursor.execute(query_done)
@@ -151,7 +152,7 @@ def add_data(task_name, deadline, status):
 
 
 def app():
-    
+
     while(user_input := input(MENU_PROMPT)) != "5":
         if user_input == "1":
             task_name = input("Entrer le nom de votre nouvelle tâche: ")
