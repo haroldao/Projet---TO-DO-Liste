@@ -144,7 +144,7 @@ def show_task_status():
 create_table()
 
 
-######################## Application #######################
+######################## Application ########################
 
 def add_data(task_name, deadline, status):
     add_task(task_name, deadline, status)
